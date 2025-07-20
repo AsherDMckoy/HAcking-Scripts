@@ -178,7 +178,7 @@ For issues with:
 
 ## Version Information
 
-- **Script Version**: 1.0
+- **Script Version**: 2.0
 - **Evilginx Version**: 3.3.0
 - **Supported Platforms**: Linux 64-bit
 
