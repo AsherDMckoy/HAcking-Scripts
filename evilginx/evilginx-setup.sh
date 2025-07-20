@@ -82,7 +82,7 @@ mkdir -p ~/$CONFIG_DIR || error_exit "Failed to create config directory"
 touch ~/$CONFIG_DIR/config.json || error_exit "Failed to create config.json file."
 
 # Create config.yaml with the provided domain and IP
-cat > $CONFIG_DIR/config.json<< EOF
+cat > ~/$CONFIG_DIR/config.json<< EOF
 {
     "general : {
 	"domain": "$DOMAIN",
