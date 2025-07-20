@@ -95,7 +95,7 @@ cat > ~/$CONFIG_DIR/config.json<< EOF
 }
 EOF
 
-echo "[*] Configuration file created: $CONFIG_DIR/config.yaml"
+echo "[*] Configuration file created: ~/$CONFIG_DIR/config.yaml"
 
 echo "[+] Evilginx installed and configured!"
 echo "    Domain: $DOMAIN"
