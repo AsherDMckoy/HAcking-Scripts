@@ -84,13 +84,13 @@ touch ~/$CONFIG_DIR/config.json || error_exit "Failed to create config.json file
 # Create config.yaml with the provided domain and IP
 cat > ~/$CONFIG_DIR/config.json << EOF
 {
-    "general : {
+    "general": {
 	"domain": "$DOMAIN",
     	"bind_ipv4": "0.0.0.0",
 	"dns_port": 5344,
     	"external_ipv4": "$PUBLIC_IP",
     	"https_port": 443,
-    	"blacklist_mode": "unauth",
+    	"blacklist_mode": "unauth"
      }
 }
 EOF
