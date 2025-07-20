@@ -75,7 +75,7 @@ fi
 echo "[*] Creating Evilginx configuration file..."
 
 # Create the config directory if it doesn't exist
-mkdir -p .evilginx 
+mkdir -p ".evilginx" 
 
 # Create config.yaml with the provided domain and IP
 cat > .evilginx/config.json<< EOF
