@@ -85,6 +85,7 @@ cat > .evilginx/config.json<< EOF
     "general : {
 	"domain": "$DOMAIN",
     	"bind_ipv4": "0.0.0.0",
+	"dns_port": 5344,
     	"external_ipv4": "$PUBLIC_IP",
     	"https_port": 443,
     	"blacklist_mode": "unauth",
