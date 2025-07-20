@@ -1,120 +1,187 @@
-# Evilginx Installer Script
+# Evilginx Installation Script
 
-This is a simple Bash script that automates the installation and basic configuration of **[Evilginx2](https://github.com/kgretzky/evilginx2)** from its GitHub releases.  
+An automated installer script for Evilginx2 v3.3.0 that downloads, configures, and sets up the phishing framework with your domain and public IP.
 
-It downloads the latest release, extracts it, makes it executable, and sets up your **domain** and **public IP address** automatically.  
+## What This Script Does
 
----
+This script automates the complete installation and initial configuration of Evilginx2:
 
-## ✅ Features
+1. **Downloads** the latest Evilginx2 release (v3.3.0) from GitHub
+2. **Extracts** the binary to a local `evilginx/` directory
+3. **Configures** your domain and public IP automatically
+4. **Initializes** the framework ready for use
 
-- Creates a clean install directory for Evilginx  
-- Downloads the **latest release** from GitHub  
-- Extracts the binary and makes it executable  
-- Initializes Evilginx and configures:
-  - Your custom **domain**  
-  - Your **external public IPv4**  
-- Includes basic error handling  
-- Prevents accidental reinstallation if already installed  
+## Prerequisites
 
----
+- Linux system (64-bit)
+- `wget` installed
+- `unzip` installed
+- Root/sudo access (recommended for port 80/443 binding)
+- A registered domain name
+- Public IP address
 
-## 🔧 Requirements
+### Installing Dependencies
 
-- Linux (Ubuntu, Debian, Arch, etc.)
-- `wget`  
-- `unzip`  
-- `bash`  
+**Ubuntu/Debian:**
+```bash
+sudo apt update
+sudo apt install wget unzip
+```
 
-Install missing dependencies with:  
+**CentOS/RHEL:**
+```bash
+sudo yum install wget unzip
+```
+
+## Installation
+
+1. **Download the script:**
+```bash
+wget https://raw.githubusercontent.com/your-repo/evilginx-installer/main/install_evilginx.sh
+chmod +x install_evilginx.sh
+```
+
+2. **Run the installer:**
+```bash
+./install_evilginx.sh <your-domain> <your-public-ip>
+```
+
+**Example:**
+```bash
+./install_evilginx.sh phishing.example.com 203.0.113.45
+```
+
+## Usage
+
+After installation, the script will create an `evilginx/` directory in your current location.
+
+**Start Evilginx:**
+```bash
+cd evilginx
+sudo ./evilginx -p ./
+```
+
+**Why sudo?** Evilginx needs to bind to ports 80 and 443 for HTTP/HTTPS traffic.
+
+## Directory Structure
+
+After installation, you'll have:
+```
+evilginx/
+├── evilginx                    # Main binary
+├── evilginx-linux.zip         # Downloaded archive (can be deleted)
+├── phishlets/                 # Phishing templates
+├── redirectors/               # URL redirectors
+└── [config files]            # Generated configuration
+```
+
+## Configuration
+
+The script automatically configures:
+- **Domain**: Your phishing domain
+- **External IPv4**: Your public IP address
+
+These settings are applied during installation, but you can modify them later within the Evilginx console:
 
 ```bash
-sudo apt install wget unzip -y   # Debian/Ubuntu
-sudo pacman -S wget unzip        # Arch
+evilginx : config domain new-domain.com
+evilginx : config ipv4 external 192.0.2.100
+```
 
-🚀 Installation
+## Common Issues & Troubleshooting
 
-    Download and make the script executable:
+### "Evilginx seems to already be installed"
+The script detected an existing installation. Remove the `evilginx/` directory first:
+```bash
+rm -rf evilginx/
+```
 
-wget https://your-repo/install_evilginx.sh
-chmod +x install_evilginx.sh
+### "Permission denied" when starting Evilginx
+Evilginx needs root privileges to bind to ports 80/443:
+```bash
+sudo ./evilginx -p ./
+```
 
-    Run the installer with your domain and public IP:
+### "Download failed"
+Check your internet connection and verify the GitHub release URL is accessible:
+```bash
+curl -I https://github.com/kgretzky/evilginx2/releases/download/v3.3.0/evilginx-v3.3.0-linux-64bit.zip
+```
 
-./install_evilginx.sh <domain> <public_ip>
+### DNS Configuration
+Ensure your domain's DNS points to your server:
+```bash
+# Check DNS resolution
+nslookup your-domain.com
 
-▶️ Usage Example
+# Should return your public IP
+```
 
-Let’s say you want to set up Evilginx with:
+## Security Considerations
 
-    Domain: phishing.example.com
+**⚠️ Legal Notice:** This tool is for authorized security testing only. Ensure you have explicit permission before testing against any systems you don't own.
 
-    Public IP: 203.0.113.45
+**Best Practices:**
+- Use only in controlled environments
+- Obtain proper authorization before testing
+- Keep logs for legitimate security assessments
+- Follow your organization's security policies
 
-Run:
+## Advanced Configuration
 
-./install_evilginx.sh phishing.example.com 203.0.113.45
+### Custom Installation Directory
+To install in a different location, run the script from that directory:
+```bash
+mkdir /opt/phishing-tools
+cd /opt/phishing-tools
+/path/to/install_evilginx.sh domain.com 1.2.3.4
+```
 
-This will:
-✅ Create a directory called evilginx
-✅ Download the latest Evilginx release
-✅ Extract and make it executable
-✅ Configure the domain phishing.example.com
-✅ Configure the external IPv4 203.0.113.45
+### Firewall Configuration
+Ensure ports 80 and 443 are open:
+```bash
+# UFW (Ubuntu)
+sudo ufw allow 80
+sudo ufw allow 443
 
-After installation, you can run Evilginx with:
+# iptables
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+```
 
-cd evilginx
-./evilginx -p ./
+### SSL Certificate Setup
+Evilginx handles SSL certificates automatically, but ensure:
+- Your domain resolves to your server
+- Ports 80/443 are accessible from the internet
+- No other web servers are running on these ports
 
-And check the current configuration:
+## Uninstallation
 
-./evilginx config
+To completely remove Evilginx:
+```bash
+# Stop any running instances
+sudo pkill evilginx
 
-📂 What happens?
+# Remove installation directory
+rm -rf evilginx/
 
-    A folder named evilginx will be created.
+# Remove the installer script (optional)
+rm install_evilginx.sh
+```
 
-    The latest release of Evilginx will be downloaded and extracted there.
+## Support
 
-    Evilginx will briefly start to initialize configs.
+For issues with:
+- **This installer script**: Create an issue in this repository
+- **Evilginx itself**: Visit the [official Evilginx2 repository](https://github.com/kgretzky/evilginx2)
+- **Phishlet creation**: Check the [Evilginx documentation](https://help.evilginx.com/)
 
-    Your domain and external IPv4 will be set automatically.
+## Version Information
 
-⚠️ Notes
+- **Script Version**: 1.0
+- **Evilginx Version**: 3.3.0
+- **Supported Platforms**: Linux 64-bit
 
-    This script is for educational and testing purposes only.
+## License
 
-    Do not use Evilginx for illegal activities.
-
-    Ensure you have proper authorization before using phishing frameworks.
-
-❓ Troubleshooting
-
-    If the download fails, check your network or GitHub availability.
-
-    If Evilginx doesn’t run, ensure your Linux architecture matches the binary.
-
-    To reinstall, remove the evilginx folder and run the script again.
-
-🛠 Quick Workflow
-
-# 1. Download script
-wget https://your-repo/install_evilginx.sh
-chmod +x install_evilginx.sh
-
-# 2. Run installer with your domain and IP
-./install_evilginx.sh attacker.com 198.51.100.20
-
-# 3. Start Evilginx
-cd evilginx
-./evilginx -p ./
-
-# 4. Verify configs
-./evilginx config
-
-📜 Disclaimer
-
-This tool is intended for authorized penetration testing and security research only.
-The author is not responsible for any misuse of this script.
-
+This installation script is provided as-is for educational and authorized testing purposes only. Evilginx2 itself is subject to its own license terms.
