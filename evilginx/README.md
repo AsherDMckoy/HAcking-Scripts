@@ -37,7 +37,7 @@ sudo yum install wget unzip
 
 1. **Download the script:**
 ```bash
-wget https://raw.githubusercontent.com/your-repo/evilginx-installer/main/install_evilginx.sh
+wget https://raw.githubusercontent.com/AsherDMckoy/HAcking-Scripts/refs/heads/main/evilginx/evilginx-setup.sh
 chmod +x install_evilginx.sh
 ```
 
