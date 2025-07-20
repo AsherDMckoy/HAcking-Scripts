@@ -25,11 +25,10 @@ DOMAIN=$1
 PUBLIC_IP=$2
 
 # ==== CHECK IF ALREADY INSTALLED ====
-if command -v ./$INSTALL_DIR/$BINARY_NAME &> /dev/null; then
+if [[ -f "$INSTALL_DIR/$BINARY_NAME" ]]; then
     echo "[!] Evilginx seems to already be installed. Remove $INSTALL_DIR first if you want a fresh install."
     exit 1
 fi
-
 # ==== CREATE DIRECTORY ====
 echo "[*] Creating install directory: $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR" || error_exit "Failed to create directory."
