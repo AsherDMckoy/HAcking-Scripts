@@ -67,9 +67,9 @@ sudo ./evilginx -p ./
 
 After installation, you'll have:
 ```
+evilginx-linux.zip             # Downloaded archive (can be deleted)
 evilginx/
 ├── evilginx                    # Main binary
-├── evilginx-linux.zip         # Downloaded archive (can be deleted)
 ├── phishlets/                 # Phishing templates
 ├── redirectors/               # URL redirectors
 └── [config files]            # Generated configuration
