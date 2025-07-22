@@ -1,1 +1,1 @@
-EVILGINX2 phishlets need to be edited to work for your liking
+# EVILGINX2 phishlets need to be edited to work for your liking
