@@ -2,11 +2,11 @@
 # Created for use with the HANDS ON PHISHING COURSE by Tyler Ramsbey
 # Edited version of the general wordpress.org phishlet from An0nUD4Y phishlets repo 
 # I recommend checking it out. As such the comments from the original
-# phishlet remain in tact it's just a matter of editing the domain names and furhter
+# phishlet remain in tact it's just a matter of editing the domain names and further
 # customization to suit your own needs
 # 
 # LINK TO ORIGINAL REPO: https://github.com/An0nUD4Y/Evilginx2-Phishlets
-# LINK TO MY REPO: 
+# LINK TO MY REPO: https://github.com/AsherDMckoy/HAcking-Scripts 
  
 ---
 name: 'Hacksmarter-manufacturing.shop'
