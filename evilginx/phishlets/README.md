@@ -46,27 +46,6 @@ Both collections are comprehensive resources, though slightly dated as they were
 
 *Note: I am not affiliated with these additional resources - they are simply excellent community collections worth referencing.*
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Evilginx2 framework installed
-- Valid SSL certificates for your test domains
-- Proper DNS configuration
-- Written authorization for testing
-
-### Installation
-1. Clone this repository to your Evilginx2 phishlets directory
-2. Configure your domains and certificates
-3. Ensure proper logging and monitoring is in place
-4. Verify all legal requirements are met before testing
-
-### Configuration
-Each phishlet includes:
-- YAML configuration file
-- Setup instructions
-- Customization notes
-- Legal considerations
-
 ## 📖 Educational Context
 
 These phishlets serve multiple educational purposes:
