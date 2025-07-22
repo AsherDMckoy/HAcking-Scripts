@@ -70,4 +70,5 @@ Feel free to submit pull requests for:
 
 ---
 
-*This repository is actively maintained and updated as new scripts are developed.*
+*This repository is mostly for use in my personal job but updated as new scripts are developed.*
+*Feel free to make pull requests for bug fixes or optimizations.*
