@@ -70,9 +70,9 @@ After installation, you'll have:
 evilginx/
 ├── evilginx                    # Main binary
 ├── evilginx-linux.zip          # Download archive (can be deleted) 
-├── phishlets/                 # Phishing templates
-├── redirectors/               # URL redirectors
-└── [config files]            # Generated configuration
+├── phishlets/                  # Phishing templates
+├── redirectors/                # URL redirectors
+└── [config files]              # Generated configuration
 ```
 
 ## Configuration
